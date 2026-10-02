@@ -141,7 +141,7 @@ export default function App() {
       <CartProvider>
         <WishlistProvider>
           <ToastProvider>
-            <Router>
+            <Router basename={import.meta.env.BASE_URL}>
               <MainLayout />
             </Router>
           </ToastProvider>
