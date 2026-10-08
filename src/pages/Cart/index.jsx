@@ -383,14 +383,18 @@ export default function Cart() {
         @media (max-width: 900px) {
           .cart-page-grid {
             grid-template-columns: 1fr !important;
+            gap: 32px !important;
           }
+        }
+        @media (max-width: 600px) {
           .cart-item-row {
-            flex-direction: column !important;
+            padding: 16px !important;
+            gap: 14px !important;
             align-items: flex-start !important;
           }
           .cart-item-row img {
-            width: 100% !important;
-            height: 220px !important;
+            width: 76px !important;
+            height: 98px !important;
           }
         }
       `}</style>

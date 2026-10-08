@@ -53,11 +53,14 @@ export default function SearchModal({ isOpen, onClose }) {
       <div
         style={{
           position: 'fixed',
-          top: '10%',
+          top: 'max(16px, env(safe-area-inset-top, 16px))',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '92%',
           maxWidth: '720px',
+          maxHeight: 'min(86vh, 86dvh)',
+          display: 'flex',
+          flexDirection: 'column',
           backgroundColor: '#FFFFFF',
           borderRadius: 'var(--radius-md)',
           boxShadow: 'var(--shadow-modal)',
@@ -72,9 +75,9 @@ export default function SearchModal({ isOpen, onClose }) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '18px 24px',
+            padding: 'clamp(12px, 2.5vw, 18px) clamp(14px, 3vw, 24px)',
             borderBottom: '1px solid var(--border-subtle)',
-            gap: 14
+            gap: 12
           }}
         >
           <Search size={22} color="var(--text-tertiary)" />
@@ -143,7 +146,7 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {/* Live Results List */}
         {query && (
-          <div style={{ maxHeight: '420px', overflowY: 'auto', padding: '16px 24px' }}>
+          <div style={{ flex: 1, maxHeight: 'calc(min(86vh, 86dvh) - 80px)', overflowY: 'auto', WebkitOverflowScrolling: 'touch', padding: '16px clamp(14px, 3vw, 24px)' }}>
             {loading ? (
               <div style={{ padding: '30px', textAlign: 'center', color: 'var(--text-tertiary)' }}>
                 Searching KAYOO records...

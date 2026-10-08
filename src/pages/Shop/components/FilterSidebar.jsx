@@ -232,12 +232,14 @@ export default function FilterSidebar({
             top: 0,
             left: 0,
             bottom: 0,
+            height: '100dvh',
             width: '84%',
             maxWidth: '360px',
             backgroundColor: '#FFFFFF',
             zIndex: 1100,
-            padding: '24px',
+            padding: 'max(20px, env(safe-area-inset-top, 20px)) clamp(16px, 3vw, 24px) max(24px, env(safe-area-inset-bottom, 24px)) clamp(16px, 3vw, 24px)',
             overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch',
             boxShadow: 'var(--shadow-drawer)',
             animation: 'slideInLeft 0.3s ease'
           }}

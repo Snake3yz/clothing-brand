@@ -25,7 +25,8 @@ import {
   Image as ImageIcon,
   MessageSquare,
   ArrowRight,
-  Check
+  Check,
+  X
 } from 'lucide-react';
 
 export default function ProductDetails() {
@@ -177,7 +178,7 @@ export default function ProductDetails() {
           className="product-details-grid"
         >
           {/* LEFT: Image Gallery & 3D Visualizer */}
-          <div style={{ position: 'sticky', top: '100px' }}>
+          <div className="product-gallery-sticky" style={{ position: 'sticky', top: '100px' }}>
             {/* View Mode Toggle (High-Res Photos vs 360° Studio Visualizer) */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
               <div style={{ display: 'flex', gap: 8, backgroundColor: 'var(--bg-secondary)', padding: 4, borderRadius: 'var(--radius-pill)' }}>
@@ -435,7 +436,7 @@ export default function ProductDetails() {
 
             {/* Quantity Stepper & Add to Bag / Buy Now */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
-              <div style={{ display: 'flex', gap: 12 }}>
+              <div className="product-action-row" style={{ display: 'flex', gap: 12 }}>
                 {/* Quantity Stepper */}
                 <div
                   style={{
@@ -697,15 +698,28 @@ export default function ProductDetails() {
               transform: 'translate(-50%, -50%)',
               width: '92%',
               maxWidth: '520px',
+              maxHeight: 'min(90vh, 90dvh)',
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
               backgroundColor: '#FFFFFF',
               borderRadius: 'var(--radius-md)',
               boxShadow: 'var(--shadow-modal)',
               zIndex: 1300,
-              padding: '32px',
+              padding: 'clamp(20px, 4vw, 32px)',
               animation: 'fadeIn 0.2s ease'
             }}
           >
-            <h3 style={{ marginBottom: 8 }}>Share Your Experience</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+              <h3 style={{ margin: 0, fontSize: '1.25rem' }}>Share Your Experience</h3>
+              <button
+                type="button"
+                onClick={() => setWriteReviewOpen(false)}
+                className="nav-icon-btn"
+                aria-label="Close review modal"
+              >
+                <X size={18} />
+              </button>
+            </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 20 }}>
               Reviewing "{product.name}". Your commentary guides fellow patrons.
             </p>
@@ -806,7 +820,20 @@ export default function ProductDetails() {
         @media (max-width: 900px) {
           .product-details-grid {
             grid-template-columns: 1fr !important;
-            gap: 36px !important;
+            gap: 32px !important;
+          }
+          .product-gallery-sticky {
+            position: static !important;
+            top: auto !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .product-action-row {
+            flex-direction: column !important;
+          }
+          .product-action-row > div {
+            justify-content: center !important;
+            width: 100% !important;
           }
         }
       `}</style>

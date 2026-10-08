@@ -220,9 +220,9 @@ export default function Footer() {
               © {new Date().getFullYear()} KAYOO STUDIO (Kampuchea Aspire Youth Original Outfit). All rights reserved.
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
               <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Payment Methods:</span>
-              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                 <span className="badge badge-dark" style={{ border: '1px solid #333' }}>KHQR / ABA</span>
                 <span className="badge badge-dark" style={{ border: '1px solid #333' }}>Apple Pay</span>
                 <span className="badge badge-dark" style={{ border: '1px solid #333' }}>Visa</span>
@@ -242,14 +242,16 @@ export default function Footer() {
           color: #FFFFFF;
           transform: translateX(2px);
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1040px) {
           .footer-grid {
             grid-template-columns: 1fr 1fr !important;
+            gap: 32px !important;
           }
         }
         @media (max-width: 600px) {
           .footer-grid {
             grid-template-columns: 1fr !important;
+            gap: 28px !important;
           }
         }
       `}</style>

@@ -42,6 +42,26 @@ export default function Interactive3DViewer({ product }) {
     setIsDragging(false);
   };
 
+  // Touch gesture support for mobile and tablets
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length === 1) {
+      setIsDragging(true);
+      startXRef.current = e.touches[0].clientX;
+      currentAngleRef.current = rotationAngle;
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !e.touches || e.touches.length !== 1) return;
+    const deltaX = e.touches[0].clientX - startXRef.current;
+    const newAngle = (currentAngleRef.current + deltaX * 0.8) % 360;
+    setRotationAngle(newAngle < 0 ? newAngle + 360 : newAngle);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   // Determine active frame image or perspective angle based on rotation
   const imageCount = product.images?.length || 1;
   const normalizedIndex = Math.floor((rotationAngle / 360) * imageCount) % imageCount;
@@ -65,12 +85,17 @@ export default function Interactive3DViewer({ product }) {
         backgroundColor: '#141416',
         color: '#FFFFFF',
         userSelect: 'none',
-        cursor: isDragging ? 'grabbing' : 'grab'
+        cursor: isDragging ? 'grabbing' : 'grab',
+        touchAction: 'pan-y'
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
       {/* 3D Visualizer Canvas / Image with Perspective Transform */}
       <div

@@ -40,12 +40,13 @@ export default function QuickViewModal({ product, onClose }) {
           transform: 'translate(-50%, -50%)',
           width: '92%',
           maxWidth: '920px',
-          maxHeight: '90vh',
+          maxHeight: 'min(90vh, 90dvh)',
           backgroundColor: '#FFFFFF',
           borderRadius: 'var(--radius-md)',
           boxShadow: 'var(--shadow-modal)',
           zIndex: 1200,
           overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
           animation: 'fadeIn 0.25s ease'
         }}
       >
@@ -80,7 +81,7 @@ export default function QuickViewModal({ product, onClose }) {
           className="quickview-grid"
         >
           {/* Left: Gallery */}
-          <div style={{ padding: '24px' }}>
+          <div className="quickview-left" style={{ padding: 'clamp(16px, 3vw, 24px)' }}>
             <div
               style={{
                 width: '100%',
@@ -122,7 +123,7 @@ export default function QuickViewModal({ product, onClose }) {
           </div>
 
           {/* Right: Garment Information & Controls */}
-          <div style={{ padding: '32px 32px 32px 0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="quickview-right" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                 <span className="badge badge-dark">{product.gender}</span>
@@ -233,7 +234,7 @@ export default function QuickViewModal({ product, onClose }) {
               )}
 
               {/* Quantity Stepper & Add to Bag */}
-              <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 20 }}>
+              <div className="quickview-actions" style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 20, flexWrap: 'wrap' }}>
                 <div
                   style={{
                     display: 'inline-flex',
@@ -267,6 +268,7 @@ export default function QuickViewModal({ product, onClose }) {
                   disabled={isOutOfStock}
                   style={{
                     flex: 1,
+                    minWidth: '180px',
                     height: 48,
                     opacity: isOutOfStock ? 0.6 : 1,
                     cursor: isOutOfStock ? 'not-allowed' : 'pointer'
@@ -279,7 +281,7 @@ export default function QuickViewModal({ product, onClose }) {
             </div>
 
             {/* Bottom Link to Full Product Page */}
-            <div style={{ paddingTop: 16, borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="quickview-footer" style={{ paddingTop: 16, borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <ShieldCheck size={14} color="var(--accent-gold)" /> Authenticity & lifetime seam repair guaranteed
               </span>
@@ -303,9 +305,28 @@ export default function QuickViewModal({ product, onClose }) {
       </div>
 
       <style>{`
+        .quickview-right {
+          padding: 32px 32px 32px 0;
+        }
         @media (max-width: 768px) {
           .quickview-grid {
             grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+          .quickview-left {
+            padding: 20px 20px 10px 20px !important;
+          }
+          .quickview-right {
+            padding: 10px 20px 24px 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .quickview-actions {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .quickview-actions > div {
+            justify-content: center !important;
           }
         }
       `}</style>

@@ -70,8 +70,9 @@ export default function CartDrawer() {
           top: 0,
           right: 0,
           bottom: 0,
+          height: '100dvh',
           width: '100%',
-          maxWidth: '460px',
+          maxWidth: 'min(460px, 100vw)',
           backgroundColor: '#FFFFFF',
           zIndex: 1100,
           display: 'flex',
@@ -83,7 +84,7 @@ export default function CartDrawer() {
         {/* Header */}
         <div
           style={{
-            padding: '22px 24px',
+            padding: 'max(20px, env(safe-area-inset-top, 20px)) clamp(16px, 3vw, 24px) 18px',
             borderBottom: '1px solid var(--border-subtle)',
             display: 'flex',
             alignItems: 'center',
@@ -140,7 +141,7 @@ export default function CartDrawer() {
         </div>
 
         {/* Items List */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '20px 24px' }}>
+        <div style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch', padding: '20px clamp(16px, 3vw, 24px)' }}>
           {items.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 0' }}>
               <div
@@ -347,7 +348,7 @@ export default function CartDrawer() {
         {items.length > 0 && (
           <div
             style={{
-              padding: '20px 24px',
+              padding: '16px clamp(16px, 3vw, 24px) max(20px, env(safe-area-inset-bottom, 20px))',
               borderTop: '1px solid var(--border-subtle)',
               backgroundColor: 'var(--bg-primary)'
             }}

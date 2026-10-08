@@ -56,9 +56,10 @@ export default function SizeGuideModal({ isOpen, onClose }) {
           borderRadius: 'var(--radius-md)',
           boxShadow: 'var(--shadow-modal)',
           zIndex: 1300,
-          padding: '32px',
-          maxHeight: '90vh',
+          padding: 'clamp(18px, 4vw, 32px)',
+          maxHeight: 'min(90vh, 90dvh)',
           overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
           animation: 'fadeIn 0.2s ease'
         }}
       >
@@ -122,8 +123,8 @@ export default function SizeGuideModal({ isOpen, onClose }) {
         </div>
 
         {/* Measurement Table */}
-        <div style={{ overflowX: 'auto', marginBottom: 24 }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem' }}>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', marginBottom: 24 }}>
+          <table style={{ width: '100%', minWidth: '460px', borderCollapse: 'collapse', fontSize: '0.86rem', whiteSpace: 'nowrap' }}>
             <thead>
               <tr style={{ backgroundColor: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-medium)' }}>
                 <th style={{ padding: '10px 14px', textAlign: 'left', fontWeight: 700 }}>Size</th>

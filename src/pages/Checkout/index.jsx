@@ -143,7 +143,7 @@ export default function Checkout() {
               <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-tertiary)', marginBottom: 12, fontWeight: 700 }}>
                 Instant Express Checkout
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+              <div className="checkout-express-btns" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, paymentMethod: 'apple' })}
@@ -197,9 +197,9 @@ export default function Checkout() {
             </div>
 
             {/* Step 1: Contact Information */}
-            <div style={{ padding: '32px', backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
+            <div style={{ padding: 'clamp(20px, 4vw, 32px)', backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
               <h3 style={{ fontSize: '1.25rem', marginBottom: 20 }}>1. Contact Details</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div className="checkout-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div>
                   <label className="form-label">Email Address *</label>
                   <input
@@ -224,10 +224,10 @@ export default function Checkout() {
             </div>
 
             {/* Step 2: Shipping Destination Address */}
-            <div style={{ padding: '32px', backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
+            <div style={{ padding: 'clamp(20px, 4vw, 32px)', backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
               <h3 style={{ fontSize: '1.25rem', marginBottom: 20 }}>2. Delivery Address</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="checkout-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
                     <label className="form-label">First Name *</label>
                     <input
@@ -262,7 +262,7 @@ export default function Checkout() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+                <div className="checkout-three-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
                   <div>
                     <label className="form-label">Apartment / Suite</label>
                     <input
@@ -294,7 +294,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="checkout-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
                     <label className="form-label">State / Province *</label>
                     <input
@@ -555,6 +555,20 @@ export default function Checkout() {
       <style>{`
         @media (max-width: 900px) {
           .checkout-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .checkout-three-col {
+            grid-template-columns: 1fr !important;
+          }
+          .checkout-two-col {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .checkout-express-btns {
             grid-template-columns: 1fr !important;
           }
         }

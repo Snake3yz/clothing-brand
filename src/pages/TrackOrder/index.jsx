@@ -152,9 +152,10 @@ export default function TrackOrder() {
                     const isPending = stepNum > order.timelineStep;
 
                     return (
-                      <div key={idx} style={{ textAlign: 'center', position: 'relative' }}>
+                      <div key={idx} className="timeline-step-item" style={{ textAlign: 'center', position: 'relative' }}>
                         {/* Circle Node */}
                         <div
+                          className="timeline-step-circle"
                           style={{
                             width: 36,
                             height: 36,
@@ -178,14 +179,16 @@ export default function TrackOrder() {
                           {isCompleted ? <CheckCircle2 size={18} /> : stepNum}
                         </div>
 
-                        <div style={{ fontSize: '0.82rem', fontWeight: 700, color: isCurrent ? 'var(--text-primary)' : isCompleted ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>
-                          {st.title}
-                        </div>
-                        <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', marginTop: 2 }}>
-                          {st.desc}
-                        </div>
-                        <div style={{ fontSize: '0.7rem', color: isCurrent ? 'var(--accent-gold-dark)' : 'var(--text-tertiary)', marginTop: 4, fontWeight: 600 }}>
-                          {st.date}
+                        <div className="timeline-step-details">
+                          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: isCurrent ? 'var(--text-primary)' : isCompleted ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>
+                            {st.title}
+                          </div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', marginTop: 2 }}>
+                            {st.desc}
+                          </div>
+                          <div style={{ fontSize: '0.7rem', color: isCurrent ? 'var(--accent-gold-dark)' : 'var(--text-tertiary)', marginTop: 4, fontWeight: 600 }}>
+                            {st.date}
+                          </div>
                         </div>
                       </div>
                     );
@@ -253,7 +256,19 @@ export default function TrackOrder() {
           .timeline-stepper {
             grid-template-columns: 1fr !important;
             gap: 20px !important;
+          }
+          .timeline-step-item {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
             text-align: left !important;
+          }
+          .timeline-step-circle {
+            margin: 0 !important;
+            flex-shrink: 0 !important;
+          }
+          .timeline-step-details {
+            flex: 1 !important;
           }
           .order-tracking-breakdown {
             grid-template-columns: 1fr !important;

@@ -109,7 +109,7 @@ export default function Contact() {
           {/* Form */}
           <div
             style={{
-              padding: '36px',
+              padding: 'clamp(20px, 4vw, 36px)',
               backgroundColor: '#FFFFFF',
               borderRadius: 'var(--radius-md)',
               border: '1px solid var(--border-subtle)',
@@ -157,7 +157,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
                     <label className="form-label">Email Address *</label>
                     <input
@@ -319,6 +319,12 @@ export default function Contact() {
       <style>{`
         @media (max-width: 900px) {
           .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 36px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .contact-form-row {
             grid-template-columns: 1fr !important;
           }
         }

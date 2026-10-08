@@ -44,14 +44,14 @@ export default function OrderConfirmation() {
             backgroundColor: '#FFFFFF',
             borderRadius: 'var(--radius-md)',
             border: '1px solid var(--border-subtle)',
-            padding: '32px',
+            padding: 'clamp(18px, 4vw, 32px)',
             maxWidth: '540px',
             margin: '0 auto 36px',
             textAlign: 'left',
             boxShadow: 'var(--shadow-sm)'
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 16, borderBottom: '1px solid var(--border-subtle)', marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 16, borderBottom: '1px solid var(--border-subtle)', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
             <div>
               <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '0.08em' }}>
                 Order Number
@@ -85,7 +85,7 @@ export default function OrderConfirmation() {
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
+        <div className="confirmation-actions" style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
           <Link to={`/track-order?order=${orderId}`} className="btn btn-primary btn-lg">
             <Truck size={18} /> Track Courier Telemetry <ArrowRight size={16} />
           </Link>
@@ -97,6 +97,15 @@ export default function OrderConfirmation() {
           </Link>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .confirmation-actions a {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

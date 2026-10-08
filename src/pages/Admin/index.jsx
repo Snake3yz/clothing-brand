@@ -400,7 +400,47 @@ export default function Admin() {
       </header>
 
       {/* Main Admin Workspace */}
-      <div style={{ display: 'flex', flex: 1 }}>
+      <div style={{ display: 'flex', flex: 1, minWidth: 0 }} className="admin-workspace">
+        {/* Mobile Tab Navigation (visible only on <= 840px) */}
+        <div className="admin-mobile-tabs">
+          {[
+            { id: 'products', label: `Creations (${productList.length})`, icon: Package },
+            { id: 'overview', label: 'Analytics', icon: LayoutDashboard },
+            { id: 'orders', label: `Orders (${ordersList.length})`, icon: ShoppingBag },
+            { id: 'customers', label: 'Collectors', icon: Users },
+            { id: 'discounts', label: `Vouchers (${discountList.length})`, icon: Tag },
+            { id: 'reviews', label: `Reviews (${reviewsList.length})`, icon: MessageSquare },
+            { id: 'settings', label: 'Settings', icon: Settings }
+          ].map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: '8px 14px',
+                  borderRadius: 'var(--radius-pill)',
+                  backgroundColor: isActive ? 'rgba(168, 85, 247, 0.25)' : '#1A1A22',
+                  color: isActive ? '#E9D5FF' : '#9E9C96',
+                  border: isActive ? '1px solid #A855F7' : '1px solid #282834',
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: '0.8rem',
+                  whiteSpace: 'nowrap',
+                  cursor: 'pointer',
+                  flexShrink: 0
+                }}
+              >
+                <Icon size={14} color={isActive ? '#C084FC' : '#8E8A82'} />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Sidebar Nav */}
         <aside
           style={{
@@ -483,7 +523,7 @@ export default function Admin() {
         </aside>
 
         {/* Content Pane */}
-        <main style={{ flex: 1, padding: '36px', overflowY: 'auto' }}>
+        <main style={{ flex: 1, minWidth: 0, padding: '36px', overflowY: 'auto' }} className="admin-main-pane">
           {/* TAB 1: PRODUCTS MANAGER (Default) */}
           {activeTab === 'products' && (
             <div>
@@ -562,8 +602,8 @@ export default function Admin() {
               </div>
 
               {/* Products Table */}
-              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', overflow: 'hidden' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                <table style={{ width: '100%', minWidth: '760px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #282834', color: '#8E8A82', textAlign: 'left', backgroundColor: '#121216' }}>
                       <th style={{ padding: '14px 16px' }}>Creation & Image</th>
@@ -712,8 +752,8 @@ export default function Admin() {
           {activeTab === 'orders' && (
             <div>
               <h2 style={{ color: '#FFF', fontSize: '1.8rem', marginBottom: 20 }}>Order Fulfillment Directory</h2>
-              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '24px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '16px', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                <table style={{ width: '100%', minWidth: '700px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #282834', color: '#8E8A82', textAlign: 'left' }}>
                       <th style={{ padding: '12px 14px' }}>Order #</th>
@@ -765,8 +805,8 @@ export default function Admin() {
           {activeTab === 'customers' && (
             <div>
               <h2 style={{ color: '#FFF', fontSize: '1.8rem', marginBottom: 20 }}>KAYOO Collector Register</h2>
-              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '24px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '16px', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                <table style={{ width: '100%', minWidth: '650px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #282834', color: '#8E8A82', textAlign: 'left' }}>
                       <th style={{ padding: '12px 14px' }}>Patron</th>
@@ -804,8 +844,8 @@ export default function Admin() {
           {activeTab === 'discounts' && (
             <div>
               <h2 style={{ color: '#FFF', fontSize: '1.8rem', marginBottom: 20 }}>Promotions & Vouchers</h2>
-              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '24px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+              <div style={{ backgroundColor: '#16161B', borderRadius: 'var(--radius-sm)', border: '1px solid #23232A', padding: '16px', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                <table style={{ width: '100%', minWidth: '500px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid #282834', color: '#8E8A82', textAlign: 'left' }}>
                       <th style={{ padding: '12px 14px' }}>Code</th>
@@ -1514,9 +1554,28 @@ export default function Admin() {
       )}
 
       <style>{`
+        .admin-mobile-tabs {
+          display: none;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          gap: 8px;
+          padding: 12px 16px;
+          background-color: #121216;
+          border-bottom: 1px solid #23232A;
+          width: 100%;
+        }
         @media (max-width: 840px) {
           .admin-sidebar {
             display: none !important;
+          }
+          .admin-mobile-tabs {
+            display: flex !important;
+          }
+          .admin-workspace {
+            flex-direction: column !important;
+          }
+          .admin-main-pane {
+            padding: 20px 16px !important;
           }
           .admin-modal-grid {
             grid-template-columns: 1fr !important;

@@ -134,8 +134,8 @@ export default function About() {
             </p>
           </div>
 
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-sm)', overflow: 'hidden', border: '1px solid var(--border-medium)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem' }}>
+          <div style={{ backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-sm)', overflowX: 'auto', WebkitOverflowScrolling: 'touch', border: '1px solid var(--border-medium)' }}>
+            <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', fontSize: '0.86rem' }}>
               <thead>
                 <tr style={{ backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-medium)' }}>
                   <th style={{ padding: '14px 18px', textAlign: 'left', fontWeight: 700 }}>Material</th>

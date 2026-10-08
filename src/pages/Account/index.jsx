@@ -77,7 +77,7 @@ export default function Account() {
             backgroundColor: 'var(--bg-dark)',
             color: '#FFFFFF',
             borderRadius: 'var(--radius-md)',
-            padding: '40px',
+            padding: 'clamp(20px, 4vw, 40px)',
             marginBottom: 40,
             display: 'flex',
             justifyContent: 'space-between',
@@ -86,7 +86,7 @@ export default function Account() {
             gap: 24
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
             <div
               style={{
                 width: 72,
@@ -147,7 +147,9 @@ export default function Account() {
             borderBottom: '1px solid var(--border-subtle)',
             marginBottom: 36,
             gap: 28,
-            overflowX: 'auto'
+            overflowX: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            paddingBottom: 2
           }}
         >
           {[
@@ -487,10 +489,11 @@ export default function Account() {
               borderRadius: 'var(--radius-md)',
               boxShadow: 'var(--shadow-modal)',
               zIndex: 1300,
-              padding: '36px',
+              padding: 'clamp(20px, 4vw, 36px)',
               animation: 'fadeIn 0.2s ease',
-              maxHeight: '90vh',
-              overflowY: 'auto'
+              maxHeight: 'min(90vh, 90dvh)',
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
@@ -558,7 +561,10 @@ export default function Account() {
               borderRadius: 'var(--radius-md)',
               boxShadow: 'var(--shadow-modal)',
               zIndex: 1300,
-              padding: '32px',
+              padding: 'clamp(20px, 4vw, 32px)',
+              maxHeight: 'min(90vh, 90dvh)',
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
               animation: 'fadeIn 0.2s ease'
             }}
           >

@@ -331,30 +331,36 @@ export default function Navbar({ onOpenSearch }) {
               top: 0,
               left: 0,
               bottom: 0,
-              width: '84%',
+              width: '86%',
               maxWidth: '340px',
+              height: '100dvh',
+              maxHeight: '100dvh',
               backgroundColor: '#FFFFFF',
               zIndex: 1100,
-              padding: '24px',
+              paddingTop: 'max(20px, env(safe-area-inset-top, 20px))',
+              paddingBottom: 'max(24px, env(safe-area-inset-bottom, 24px))',
+              paddingLeft: 'max(20px, env(safe-area-inset-left, 20px))',
+              paddingRight: 'max(20px, env(safe-area-inset-right, 20px))',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between',
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
               boxShadow: 'var(--shadow-drawer)',
               animation: 'slideInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
-            <div>
+            <div style={{ flex: '1 0 auto', paddingBottom: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                 <div className="nav-logo">
                   <span className="nav-logo-text">KAYOO</span>
                   <span style={{ fontSize: '0.62rem', letterSpacing: '0.18em', color: 'var(--text-tertiary)', fontWeight: 800 }}>STUDIO</span>
                 </div>
-                <button onClick={() => setMobileMenuOpen(false)} className="nav-icon-btn">
+                <button onClick={() => setMobileMenuOpen(false)} className="nav-icon-btn" aria-label="Close menu">
                   <X size={20} />
                 </button>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <Link to="/shop" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
                   All Pieces & Shop
                 </Link>
@@ -389,12 +395,12 @@ export default function Navbar({ onOpenSearch }) {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ flexShrink: 0, marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
               <Link
                 to="/account"
                 className="btn btn-secondary btn-sm"
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ width: '100%' }}
+                style={{ width: '100%', minHeight: 42 }}
               >
                 <User size={15} /> Customer Account
               </Link>
@@ -402,7 +408,7 @@ export default function Navbar({ onOpenSearch }) {
                 to="/admin"
                 className="btn btn-primary btn-sm"
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ width: '100%', backgroundColor: 'var(--bg-dark)' }}
+                style={{ width: '100%', backgroundColor: 'var(--bg-dark)', minHeight: 42 }}
               >
                 <ShieldCheck size={15} color="var(--accent-gold)" /> Admin Dashboard
               </Link>
@@ -428,11 +434,24 @@ export default function Navbar({ onOpenSearch }) {
           font-size: 1.15rem;
           font-weight: 700;
           color: var(--text-primary);
+          padding: 4px 0;
+          touch-action: manipulation;
         }
         .mobile-nav-sublink {
           font-size: 0.9rem;
           color: var(--text-secondary);
           padding-left: 8px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          touch-action: manipulation;
+        }
+        @media (max-width: 1060px) and (min-width: 901px) {
+          .nav-links {
+            gap: 18px !important;
+          }
+          .nav-link {
+            font-size: 0.8rem !important;
+          }
         }
         @media (max-width: 900px) {
           .desktop-only { display: none !important; }
