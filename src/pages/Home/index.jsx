@@ -11,6 +11,7 @@ import { ProductCard, QuickViewModal } from '@/components/common';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { getAssetUrl } from '@/utils/assetUrl';
 import {
   ArrowRight,
   Sparkles,
@@ -39,7 +40,7 @@ const HERO_SPOTLIGHTS = [
     title: 'KAYOO Starburst "Rock-On" Heavyweight Tee',
     price: 28,
     compareAtPrice: 38,
-    image: '/products/kayoo-tee-duo.jpeg',
+    image: getAssetUrl('/products/kayoo-tee-duo.jpeg'),
     badge: 'FLAGSHIP ICON',
     category: 'Heavyweight Streetwear',
     specs: '320GSM Combed Cotton • Pitch Black',
@@ -50,7 +51,7 @@ const HERO_SPOTLIGHTS = [
     title: 'KAYOO Official Jersey — "King of Hanuman"',
     price: 11.49,
     compareAtPrice: 15.0,
-    image: '/products/kayoo-jersey-hanuman.jpeg',
+    image: getAssetUrl('/products/kayoo-jersey-hanuman.jpeg'),
     badge: 'OFFICIAL DROP',
     category: 'Performance Sportswear',
     specs: 'Khmer Kbach Motif • Micro-Mesh',
@@ -61,7 +62,7 @@ const HERO_SPOTLIGHTS = [
     title: 'KAYOO Pure-Chalk Heavyweight Street Joggers',
     price: 38,
     compareAtPrice: 48,
-    image: '/products/IMG_90E839521ACA-13.jpeg',
+    image: getAssetUrl('/products/IMG_90E839521ACA-13.jpeg'),
     badge: 'KAYOO STREET BOTTOMS',
     category: 'Heavyweight Fleece',
     specs: '380GSM Dense Terry • Chalk White',
@@ -74,21 +75,21 @@ const HERO_PERSPECTIVES = [
   {
     id: 'stairs',
     label: '01 / Architectural Stairs',
-    image: '/products/kayoo-tee-stairs-portrait.jpeg',
+    image: getAssetUrl('/products/kayoo-tee-stairs-portrait.jpeg'),
     alt: 'KAYOO Signature Oversized Tee on modern stairs',
     subtitle: 'Urban Silhouette'
   },
   {
     id: 'mirror',
     label: '02 / Mirror Duality',
-    image: '/products/kayoo-tee-mirror.jpeg',
+    image: getAssetUrl('/products/kayoo-tee-mirror.jpeg'),
     alt: 'KAYOO Front & Back Starburst Graphic Duality',
     subtitle: 'Gallery Promenade'
   },
   {
     id: 'temple',
     label: '03 / Angkor Heritage',
-    image: '/products/kayoo-tee-temple.jpeg',
+    image: getAssetUrl('/products/kayoo-tee-temple.jpeg'),
     alt: 'Angkor Wat Ancient Sanctuary Steps Campaign',
     subtitle: 'Siem Reap Sanctuary'
   }
@@ -315,17 +316,17 @@ export default function Home() {
                 <div className="editorial-social-proof">
                   <div className="avatar-stack">
                     <img
-                      src="/products/kayoo-tee-stairs.jpeg"
+                      src={getAssetUrl('/products/kayoo-tee-stairs.jpeg')}
                       alt="Customer 1"
                       className="avatar-stack-item"
                     />
                     <img
-                      src="/products/kayoo-tee-car-front.jpeg"
+                      src={getAssetUrl('/products/kayoo-tee-car-front.jpeg')}
                       alt="Customer 2"
                       className="avatar-stack-item"
                     />
                     <img
-                      src="/products/kayoo-tee-stairs-portrait.jpeg"
+                      src={getAssetUrl('/products/kayoo-tee-stairs-portrait.jpeg')}
                       alt="Customer 3"
                       className="avatar-stack-item"
                     />
@@ -521,7 +522,7 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="/products/kayoo-tee-flatlay.jpeg"
+                  src={getAssetUrl('/products/kayoo-tee-flatlay.jpeg')}
                   alt="KAYOO Starburst Tee Flatlay and Silkscreen Detail"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

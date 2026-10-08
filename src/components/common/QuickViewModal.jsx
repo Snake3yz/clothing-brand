@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
 import { X, Star, ShoppingBag, ArrowRight, ShieldCheck, Check } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function QuickViewModal({ product, onClose }) {
   const { addToCart } = useCart();
@@ -93,7 +94,7 @@ export default function QuickViewModal({ product, onClose }) {
               }}
             >
               <img
-                src={product.images?.[activeImageIndex] || product.images?.[0]}
+                src={getAssetUrl(product.images?.[activeImageIndex] || product.images?.[0])}
                 alt={product.name}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
@@ -115,7 +116,7 @@ export default function QuickViewModal({ product, onClose }) {
                       opacity: activeImageIndex === idx ? 1 : 0.6
                     }}
                   >
-                    <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={getAssetUrl(img)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </button>
                 ))}
               </div>

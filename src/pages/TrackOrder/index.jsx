@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   ArrowRight
 } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function TrackOrder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -206,7 +207,7 @@ export default function TrackOrder() {
                   {order.items?.map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
                       <img
-                        src={item.image}
+                        src={getAssetUrl(item.image)}
                         alt={item.name}
                         style={{ width: 60, height: 75, objectFit: 'cover', borderRadius: 'var(--radius-xs)', backgroundColor: 'var(--bg-secondary)' }}
                       />

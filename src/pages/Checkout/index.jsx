@@ -4,6 +4,7 @@ import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import { createOrder } from '@/services/productService';
+import { getAssetUrl } from '@/utils/assetUrl';
 import {
   ShieldCheck,
   CreditCard,
@@ -487,7 +488,7 @@ export default function Checkout() {
               {items.map((item) => (
                 <div key={`${item.id}-${item.size}-${item.color}`} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                   <img
-                    src={item.image}
+                    src={getAssetUrl(item.image)}
                     alt={item.name}
                     style={{ width: 56, height: 72, objectFit: 'cover', borderRadius: 'var(--radius-xs)', backgroundColor: 'var(--bg-secondary)' }}
                   />

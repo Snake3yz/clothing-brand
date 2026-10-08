@@ -4,6 +4,7 @@ import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useToast } from '@/context/ToastContext';
 import { Heart, ShoppingBag, Eye, Star } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function ProductCard({ product, onQuickView }) {
   const { addToCart } = useCart();
@@ -33,8 +34,8 @@ export default function ProductCard({ product, onQuickView }) {
     addToast(`Added "${product.name}" (${availableSize}) to shopping bag`, 'success');
   };
 
-  const primaryImage = product.images?.[0] || '';
-  const secondaryImage = product.images?.[1] || primaryImage;
+  const primaryImage = getAssetUrl(product.images?.[0] || '');
+  const secondaryImage = getAssetUrl(product.images?.[1] || primaryImage);
 
   return (
     <div className="product-card">

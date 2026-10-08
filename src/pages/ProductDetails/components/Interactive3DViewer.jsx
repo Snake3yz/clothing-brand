@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Rotate3D, Play, Pause, ZoomIn, ZoomOut, Sparkles, Move, Info } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function Interactive3DViewer({ product }) {
   const [rotationAngle, setRotationAngle] = useState(0);
@@ -110,7 +111,7 @@ export default function Interactive3DViewer({ product }) {
         }}
       >
         <img
-          src={currentImage}
+          src={getAssetUrl(currentImage)}
           alt={`${product.name} 3D Angle`}
           style={{
             width: '100%',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Layers, ShieldCheck, HeartHandshake, Scissors, ArrowRight, Flame } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function About() {
   return (
@@ -18,7 +19,7 @@ export default function About() {
         }}
       >
         <img
-          src="/products/kayoo-brand-banner.jpeg"
+          src={getAssetUrl('/products/kayoo-brand-banner.jpeg')}
           alt="KAYOO Streetwear Archive Heritage"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }}
         />
@@ -61,14 +62,14 @@ export default function About() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 64 }} className="about-photos-grid">
             <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: '420px', backgroundColor: '#000' }}>
               <img
-                src="/products/kayoo-tee-duo.jpeg"
+                src={getAssetUrl('/products/kayoo-tee-duo.jpeg')}
                 alt="KAYOO Starburst Heavyweight Tee Campaign"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
             <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: '420px', backgroundColor: '#000' }}>
               <img
-                src="/products/kayoo-jersey-hanuman.jpeg"
+                src={getAssetUrl('/products/kayoo-jersey-hanuman.jpeg')}
                 alt="KAYOO Athletic Jersey King of Hanuman"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />

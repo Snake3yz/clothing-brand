@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '@/services/productService';
 import { Search, X, ArrowRight, Sparkles } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function SearchModal({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
@@ -189,7 +190,7 @@ export default function SearchModal({ isOpen, onClose }) {
                       className="search-result-item"
                     >
                       <img
-                        src={p.images?.[0]}
+                        src={getAssetUrl(p.images?.[0])}
                         alt={p.name}
                         style={{ width: 48, height: 60, objectFit: 'cover', borderRadius: 4, backgroundColor: 'var(--bg-secondary)' }}
                       />

@@ -12,6 +12,7 @@ import {
   FAQS,
   STORES
 } from '../data/mockData';
+import { getAssetUrl } from '../utils/assetUrl';
 
 // Simulated network latency (can be set to 0 for instant tests, or 100ms for realistic smoothness)
 const delay = (ms = 50) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -22,33 +23,33 @@ const STORAGE_KEY_PRODUCTS = 'kayoo_products_inventory';
  * Visual presets of authentic KAYOO garment photography from image archive
  */
 export const PRESET_KAYOO_IMAGES = [
-  { label: 'Look 1 — Denim Skater', path: '/products/IMG_90E839521ACA-1.jpeg' },
-  { label: 'Look 2 — Night Walk Front', path: '/products/IMG_90E839521ACA-2.jpeg' },
-  { label: 'Look 3 — Car Hood Pose', path: '/products/IMG_90E839521ACA-3.jpeg' },
-  { label: 'Look 4 — Temple Steps', path: '/products/IMG_90E839521ACA-4.jpeg' },
-  { label: 'Look 5 — Temple Close-up', path: '/products/IMG_90E839521ACA-5.jpeg' },
-  { label: 'Look 6 — Architectural Steps', path: '/products/IMG_90E839521ACA-6.jpeg' },
-  { label: 'Look 7 — Courtyard Sitting', path: '/products/IMG_90E839521ACA-7.jpeg' },
-  { label: 'Look 8 — Car Hood Angled', path: '/products/IMG_90E839521ACA-8.jpeg' },
-  { label: 'Look 9 — Lake Waterfront', path: '/products/IMG_90E839521ACA-9.jpeg' },
-  { label: 'Look 10 — Athletic Jersey Detail', path: '/products/IMG_90E839521ACA-10.jpeg' },
-  { label: 'Look 11 — Staircase Fit', path: '/products/IMG_90E839521ACA-11.jpeg' },
-  { label: 'Look 12 — Street Concrete', path: '/products/IMG_90E839521ACA-12.jpeg' },
-  { label: 'Look 13 — Pure Chalk Joggers', path: '/products/IMG_90E839521ACA-13.jpeg' },
-  { label: 'Look 14 — Courtyard Close', path: '/products/IMG_90E839521ACA-14.jpeg' },
-  { label: 'Look 15 — Graphic Tee Flatlay', path: '/products/IMG_90E839521ACA-15.jpeg' },
-  { label: 'Look 16 — Waterfront Portrait', path: '/products/IMG_90E839521ACA-16.jpeg' },
-  { label: 'Look 17 — Vintage Wash Skater', path: '/products/IMG_90E839521ACA-17.jpeg' },
-  { label: 'Look 18 — Alleyway Shadows', path: '/products/IMG_90E839521ACA-18.jpeg' },
-  { label: 'Look 19 — Syndicate Tee Duo', path: '/products/IMG_90E839521ACA-19.jpeg' },
-  { label: 'Look 20 — Mirror Reflection', path: '/products/IMG_90E839521ACA-20.jpeg' },
-  { label: 'Look 21 — White Fleece Fit', path: '/products/IMG_90E839521ACA-21.jpeg' },
-  { label: 'Look 22 — Night Street Flash', path: '/products/IMG_90E839521ACA-22.jpeg' },
-  { label: 'Look 23 — Balcony Portrait', path: '/products/IMG_90E839521ACA-23.jpeg' },
-  { label: 'Look 24 — Studio Joggers', path: '/products/IMG_90E839521ACA-24.jpeg' },
-  { label: 'Signature Starburst Duo', path: '/products/kayoo-tee-duo.jpeg' },
-  { label: 'Official Athletic Jersey (Hanuman)', path: '/products/kayoo-jersey-hanuman.jpeg' },
-  { label: 'KAYOO Brand Campaign Banner', path: '/products/kayoo-brand-banner.jpeg' }
+  { label: 'Look 1 — Denim Skater', path: getAssetUrl('/products/IMG_90E839521ACA-1.jpeg') },
+  { label: 'Look 2 — Night Walk Front', path: getAssetUrl('/products/IMG_90E839521ACA-2.jpeg') },
+  { label: 'Look 3 — Car Hood Pose', path: getAssetUrl('/products/IMG_90E839521ACA-3.jpeg') },
+  { label: 'Look 4 — Temple Steps', path: getAssetUrl('/products/IMG_90E839521ACA-4.jpeg') },
+  { label: 'Look 5 — Temple Close-up', path: getAssetUrl('/products/IMG_90E839521ACA-5.jpeg') },
+  { label: 'Look 6 — Architectural Steps', path: getAssetUrl('/products/IMG_90E839521ACA-6.jpeg') },
+  { label: 'Look 7 — Courtyard Sitting', path: getAssetUrl('/products/IMG_90E839521ACA-7.jpeg') },
+  { label: 'Look 8 — Car Hood Angled', path: getAssetUrl('/products/IMG_90E839521ACA-8.jpeg') },
+  { label: 'Look 9 — Lake Waterfront', path: getAssetUrl('/products/IMG_90E839521ACA-9.jpeg') },
+  { label: 'Look 10 — Athletic Jersey Detail', path: getAssetUrl('/products/IMG_90E839521ACA-10.jpeg') },
+  { label: 'Look 11 — Staircase Fit', path: getAssetUrl('/products/IMG_90E839521ACA-11.jpeg') },
+  { label: 'Look 12 — Street Concrete', path: getAssetUrl('/products/IMG_90E839521ACA-12.jpeg') },
+  { label: 'Look 13 — Pure Chalk Joggers', path: getAssetUrl('/products/IMG_90E839521ACA-13.jpeg') },
+  { label: 'Look 14 — Courtyard Close', path: getAssetUrl('/products/IMG_90E839521ACA-14.jpeg') },
+  { label: 'Look 15 — Graphic Tee Flatlay', path: getAssetUrl('/products/IMG_90E839521ACA-15.jpeg') },
+  { label: 'Look 16 — Waterfront Portrait', path: getAssetUrl('/products/IMG_90E839521ACA-16.jpeg') },
+  { label: 'Look 17 — Vintage Wash Skater', path: getAssetUrl('/products/IMG_90E839521ACA-17.jpeg') },
+  { label: 'Look 18 — Alleyway Shadows', path: getAssetUrl('/products/IMG_90E839521ACA-18.jpeg') },
+  { label: 'Look 19 — Syndicate Tee Duo', path: getAssetUrl('/products/IMG_90E839521ACA-19.jpeg') },
+  { label: 'Look 20 — Mirror Reflection', path: getAssetUrl('/products/IMG_90E839521ACA-20.jpeg') },
+  { label: 'Look 21 — White Fleece Fit', path: getAssetUrl('/products/IMG_90E839521ACA-21.jpeg') },
+  { label: 'Look 22 — Night Street Flash', path: getAssetUrl('/products/IMG_90E839521ACA-22.jpeg') },
+  { label: 'Look 23 — Balcony Portrait', path: getAssetUrl('/products/IMG_90E839521ACA-23.jpeg') },
+  { label: 'Look 24 — Studio Joggers', path: getAssetUrl('/products/IMG_90E839521ACA-24.jpeg') },
+  { label: 'Signature Starburst Duo', path: getAssetUrl('/products/kayoo-tee-duo.jpeg') },
+  { label: 'Official Athletic Jersey (Hanuman)', path: getAssetUrl('/products/kayoo-jersey-hanuman.jpeg') },
+  { label: 'KAYOO Brand Campaign Banner', path: getAssetUrl('/products/kayoo-brand-banner.jpeg') }
 ];
 
 /**
@@ -61,7 +62,14 @@ export function getActiveProducts() {
     if (saved) {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+        return parsed.map((p) => ({
+          ...p,
+          images: Array.isArray(p.images) && p.images.length > 0
+            ? p.images.map(getAssetUrl)
+            : [getAssetUrl('/products/kayoo-tee-duo.jpeg')],
+          thumbnail: getAssetUrl(p.thumbnail || p.images?.[0] || '/products/kayoo-tee-duo.jpeg'),
+          heroImage: getAssetUrl(p.heroImage || p.images?.[0] || '/products/kayoo-tee-duo.jpeg')
+        }));
       }
     }
   } catch (err) {

@@ -8,6 +8,7 @@ import {
   resetProductsToDefault,
   PRESET_KAYOO_IMAGES
 } from '@/services/productService';
+import { getAssetUrl } from '@/utils/assetUrl';
 import { MOCK_ORDERS, PROMO_CODES, REVIEWS, DEMO_USER } from '@/data/mockData';
 import { useToast } from '@/context/ToastContext';
 import {
@@ -92,7 +93,7 @@ export default function Admin() {
     description: 'Engineered with dropped shoulder seams, structured collar ribbing, and hand-pulled silkscreen graphic art by KAYOO Studio Phnom Penh.',
     materials: '100% Dense Combed Cotton (320 GSM). Pre-shrunk bio-wash.',
     care: 'Machine wash cold inside out with like colors. Hang dry in shade. Do not iron directly on silkscreen print.',
-    images: ['/products/kayoo-tee-duo.jpeg'],
+    images: [getAssetUrl('/products/kayoo-tee-duo.jpeg')],
     sizes: ['S', 'M', 'L', 'XL'],
     colorName: 'Obsidian Black',
     colorHex: '#161618'
@@ -208,7 +209,7 @@ export default function Admin() {
       return;
     }
 
-    const imagesToUse = newProduct.images.length > 0 ? newProduct.images : ['/products/kayoo-tee-duo.jpeg'];
+    const imagesToUse = newProduct.images.length > 0 ? newProduct.images.map(getAssetUrl) : [getAssetUrl('/products/kayoo-tee-duo.jpeg')];
 
     const payload = {
       name: newProduct.name.trim(),
@@ -255,7 +256,7 @@ export default function Admin() {
       description: product.description || '',
       materials: product.materials || '',
       care: product.care || '',
-      images: Array.isArray(product.images) && product.images.length > 0 ? product.images : ['/products/kayoo-tee-duo.jpeg'],
+      images: Array.isArray(product.images) && product.images.length > 0 ? product.images.map(getAssetUrl) : [getAssetUrl('/products/kayoo-tee-duo.jpeg')],
       sizes: Array.isArray(product.sizes) ? product.sizes.map((s) => s.size) : ['S', 'M', 'L', 'XL'],
       colorName: product.colors?.[0]?.name || 'Obsidian Black',
       colorHex: product.colors?.[0]?.hex || '#161618'
@@ -282,7 +283,7 @@ export default function Admin() {
       description: editFormData.description,
       materials: editFormData.materials,
       care: editFormData.care,
-      images: editFormData.images.length > 0 ? editFormData.images : ['/products/kayoo-tee-duo.jpeg'],
+      images: editFormData.images.length > 0 ? editFormData.images.map(getAssetUrl) : [getAssetUrl('/products/kayoo-tee-duo.jpeg')],
       colors: [{ name: editFormData.colorName, hex: editFormData.colorHex }],
       sizes: editFormData.sizes.map((s) => ({
         size: s,
@@ -622,7 +623,7 @@ export default function Admin() {
                         <td style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
                           <div style={{ position: 'relative', width: 44, height: 56, flexShrink: 0, borderRadius: 4, overflow: 'hidden', backgroundColor: '#000', border: '1px solid #333' }}>
                             <img
-                              src={p.images?.[0] || '/products/kayoo-tee-duo.jpeg'}
+                              src={getAssetUrl(p.images?.[0] || '/products/kayoo-tee-duo.jpeg')}
                               alt=""
                               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
@@ -1187,7 +1188,7 @@ export default function Admin() {
                                   border: isSelected ? '2px solid #A855F7' : '1px solid #333'
                                 }}
                               >
-                                <img src={preset.path} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <img src={getAssetUrl(preset.path)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 {isSelected && (
                                   <div style={{ position: 'absolute', top: 2, right: 2, backgroundColor: '#A855F7', borderRadius: '50%', width: 16, height: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                     <Check size={10} color="#000" />
@@ -1231,7 +1232,7 @@ export default function Admin() {
                         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                           {newProduct.images.map((img, idx) => (
                             <div key={idx} style={{ position: 'relative', width: 54, height: 68, borderRadius: 4, overflow: 'hidden', border: idx === 0 ? '2px solid #A855F7' : '1px solid #444' }}>
-                              <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              <img src={getAssetUrl(img)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               <button
                                 type="button"
                                 onClick={() => handleRemoveImage(idx, false)}
@@ -1274,7 +1275,7 @@ export default function Admin() {
                     <div style={{ backgroundColor: '#FFFFFF', borderRadius: 'var(--radius-sm)', overflow: 'hidden', color: '#000', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', maxWidth: '280px', margin: '0 auto' }}>
                       <div style={{ position: 'relative', height: '320px', backgroundColor: '#F0ECE4' }}>
                         <img
-                          src={newProduct.images[0] || '/products/kayoo-tee-duo.jpeg'}
+                          src={getAssetUrl(newProduct.images[0] || '/products/kayoo-tee-duo.jpeg')}
                           alt=""
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
@@ -1456,7 +1457,7 @@ export default function Admin() {
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {editFormData.images.map((img, idx) => (
                     <div key={idx} style={{ position: 'relative', width: 60, height: 75, borderRadius: 4, overflow: 'hidden', border: idx === 0 ? '2px solid #A855F7' : '1px solid #444' }}>
-                      <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={getAssetUrl(img)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <button
                         type="button"
                         onClick={() => handleRemoveImage(idx, true)}

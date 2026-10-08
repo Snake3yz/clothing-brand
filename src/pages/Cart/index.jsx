@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Check
 } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function Cart() {
   const {
@@ -161,7 +162,7 @@ export default function Cart() {
                   className="cart-item-row"
                 >
                   <img
-                    src={item.image}
+                    src={getAssetUrl(item.image)}
                     alt={item.name}
                     style={{
                       width: 90,

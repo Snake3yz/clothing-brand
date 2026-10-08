@@ -5,6 +5,7 @@ import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
 import { MOCK_ORDERS } from '@/data/mockData';
+import { getAssetUrl } from '@/utils/assetUrl';
 import {
   User,
   ShoppingBag,
@@ -298,7 +299,7 @@ export default function Account() {
                   {order.items.map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                       <img
-                        src={item.image}
+                        src={getAssetUrl(item.image)}
                         alt={item.name}
                         style={{ width: 56, height: 72, objectFit: 'cover', borderRadius: 'var(--radius-xs)', backgroundColor: 'var(--bg-secondary)' }}
                       />
@@ -348,7 +349,7 @@ export default function Account() {
                     }}
                   >
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '3 / 4' }}>
-                      <img src={prod.images?.[0]} alt={prod.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={getAssetUrl(prod.images?.[0])} alt={prod.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <button
                         onClick={() => removeFromWishlist(prod.id)}
                         style={{

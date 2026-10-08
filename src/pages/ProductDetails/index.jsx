@@ -11,6 +11,7 @@ import { useWishlist } from '@/context/WishlistContext';
 import { useToast } from '@/context/ToastContext';
 import Interactive3DViewer from './components/Interactive3DViewer';
 import { SizeGuideModal, ProductCard, QuickViewModal } from '@/components/common';
+import { getAssetUrl } from '@/utils/assetUrl';
 import {
   Star,
   Heart,
@@ -240,7 +241,7 @@ export default function ProductDetails() {
                   }}
                 >
                   <img
-                    src={product.images?.[activeImageIndex] || product.images?.[0]}
+                    src={getAssetUrl(product.images?.[activeImageIndex] || product.images?.[0])}
                     alt={product.name}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
@@ -274,7 +275,7 @@ export default function ProductDetails() {
                           transition: 'opacity 0.2s ease, border-color 0.2s ease'
                         }}
                       >
-                        <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={getAssetUrl(img)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       </button>
                     ))}
                   </div>

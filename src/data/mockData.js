@@ -1,6 +1,7 @@
 // KAYOO ARCHIVE — Official Brand Data Store
 // Kampuchea Aspire Youth Original Outfit (KAYOO)
 // 100% Authentic Photoshoot Catalog from /image cloths
+import { getAssetUrl } from '../utils/assetUrl';
 
 export const CATEGORIES = [
   { id: 'all', name: 'All Pieces', count: 12, slug: 'all' },
@@ -767,3 +768,27 @@ export const DEMO_USER = {
     { id: 'card-1', brand: 'ABA KHQR', last4: '8821', exp: '12/28', default: true }
   ]
 };
+
+// Automatically resolve asset paths to include base URL (e.g. /clothing-brand/)
+export function sanitizeAssetPaths(val) {
+  if (!val) return val;
+  if (typeof val === 'string') {
+    if (val.startsWith('/products/')) return getAssetUrl(val);
+    return val;
+  }
+  if (Array.isArray(val)) {
+    return val.map(sanitizeAssetPaths);
+  }
+  if (typeof val === 'object') {
+    for (const k of Object.keys(val)) {
+      val[k] = sanitizeAssetPaths(val[k]);
+    }
+    return val;
+  }
+  return val;
+}
+
+sanitizeAssetPaths(COLLECTIONS);
+sanitizeAssetPaths(PRODUCTS);
+sanitizeAssetPaths(LOOKBOOK_LOOKS);
+sanitizeAssetPaths(MOCK_ORDERS);

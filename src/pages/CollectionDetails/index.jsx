@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getCollectionById } from '@/services/productService';
 import { ProductGrid } from '@/components/common';
 import { ArrowLeft, Sparkles } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function CollectionDetails() {
   const { id } = useParams();
@@ -58,7 +59,7 @@ export default function CollectionDetails() {
         }}
       >
         <img
-          src={collection.heroImage}
+          src={getAssetUrl(collection.heroImage)}
           alt={collection.title}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />

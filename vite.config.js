@@ -9,7 +9,20 @@ const __dirname = path.dirname(__filename)
 // https://vite.dev/config/
 export default defineConfig({
   base: '/clothing-brand/',
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'dev-asset-fallback',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && req.url.startsWith('/products/')) {
+            req.url = '/clothing-brand' + req.url;
+          }
+          next();
+        });
+      }
+    }
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

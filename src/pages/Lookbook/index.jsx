@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getLookbook } from '@/services/productService';
 import { ArrowRight, Sparkles, Eye, ShoppingBag } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function Lookbook() {
   const [looks, setLooks] = useState([]);
@@ -59,7 +60,7 @@ export default function Lookbook() {
                 }}
               >
                 <img
-                  src={look.editorialImage}
+                  src={getAssetUrl(look.editorialImage)}
                   alt={look.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCollections } from '@/services/productService';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assetUrl';
 
 export default function Collections() {
   const [collections, setCollections] = useState([]);
@@ -63,7 +64,7 @@ export default function Collections() {
                   }}
                 >
                   <img
-                    src={coll.heroImage}
+                    src={getAssetUrl(coll.heroImage)}
                     alt={coll.title}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />

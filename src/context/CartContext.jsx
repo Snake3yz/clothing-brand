@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { validatePromoCode } from '../services/productService';
+import { getAssetUrl } from '../utils/assetUrl';
 
 const CartContext = createContext(null);
 
@@ -13,7 +14,9 @@ export function CartProvider({ children }) {
       const saved = localStorage.getItem('kayoo_cart') || localStorage.getItem('aura_cart');
       if (saved) {
         const parsed = JSON.parse(saved);
-        const valid = parsed.filter((item) => item.id && item.id.startsWith('prod-kayoo'));
+        const valid = parsed
+          .filter((item) => item.id && item.id.startsWith('prod-kayoo'))
+          .map((item) => ({ ...item, image: getAssetUrl(item.image) }));
         if (valid.length > 0) return valid;
       }
     } catch {
@@ -30,7 +33,7 @@ export function CartProvider({ children }) {
         color: 'Obsidian Black & Electric Lilac',
         size: 'L',
         quantity: 1,
-        image: '/products/kayoo-tee-duo.jpeg',
+        image: getAssetUrl('/products/kayoo-tee-duo.jpeg'),
         maxStock: 24
       },
       {
@@ -42,7 +45,7 @@ export function CartProvider({ children }) {
         color: 'Onyx Black & Electric Violet',
         size: 'M',
         quantity: 1,
-        image: '/products/kayoo-jersey-hanuman.jpeg',
+        image: getAssetUrl('/products/kayoo-jersey-hanuman.jpeg'),
         maxStock: 35
       }
     ];
@@ -90,7 +93,7 @@ export function CartProvider({ children }) {
           color: chosenColor,
           size: chosenSize,
           quantity: Math.min(quantity, maxStock),
-          image: product.images ? product.images[0] : '',
+          image: getAssetUrl(product.images ? product.images[0] : ''),
           maxStock
         };
         return [...prev, newItem];
